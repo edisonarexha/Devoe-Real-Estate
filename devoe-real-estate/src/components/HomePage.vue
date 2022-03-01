@@ -1,6 +1,7 @@
 <template :style="cssProps">
   <div class="hello">
-    <div class="flexed">
+    <el-button type="primary"></el-button>
+    <!-- <div class="flexed">
       <div style="margin-top: 20px">
    <span class="logo"> <img src="@/assets/logo-trns.png" style="
             width: 150px; margin:3px" /></span> 
@@ -20,7 +21,7 @@
     <div class="container-div">
       <span style="font-weight:200; font-size:28px">Real Estate for Sale <br></span>
       <span>Find your <br> next dream home</span>
-    </div>
+    </div> -->
   </div>
 </template>
 
