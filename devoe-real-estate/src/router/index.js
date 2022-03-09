@@ -31,6 +31,17 @@ const routes = [
     name: 'about',
     component: () => import( '@/views/AboutView.vue')
   },
+  {
+    path: '/header',
+    name: 'header',
+    component: () => import( '@/views/Header.vue')
+  },
+  {
+    path: '/footer',
+    name: 'footer',
+    component: () => import( '@/views/Footer.vue')
+  },
+ 
  
 ]
 
