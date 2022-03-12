@@ -20,7 +20,9 @@
     <el-menu-item index="2-3">Apartments</el-menu-item>
   
   </el-submenu>
-
+  <el-menu-item v-if="user.loggedIn" index="1">{{user.displayName}}</el-menu-item>
+  <el-button v-if="user.loggedIn" index="1">Log Out</el-button>
+  <el-button v-if="!user.loggedIn" index="1">Log In</el-button>
 </el-menu>
 
   </div>

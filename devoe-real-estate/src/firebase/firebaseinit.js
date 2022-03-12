@@ -1,7 +1,10 @@
-import { firebase } from "firebase/app";
-import "firebase/firestore "
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+// Follow this pattern to import other Firebase services
+// import { } from 'firebase/<service>';
 
-var firebaseConfig = {
+// TODO: Replace the following with your app's Firebase project configuration
+const firebaseConfig = {
   apiKey: "AIzaSyBgCOhRFCojPEAKUuZ3_Vgb_hyXLavNgrY",
   authDomain: "devoe-2b5b3.firebaseapp.com",
   projectId: "devoe-2b5b3",
@@ -10,8 +13,5 @@ var firebaseConfig = {
   appId: "1:977488291433:web:8e1b93ec8e5010542c64f8"
 };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const timestamp = fireba.firestore.FieldValue.serverTimestamp;
-
-export {timestamp};
-export default firebaseApp.firestore();
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
