@@ -1,5 +1,5 @@
-import { reject, resolve } from 'core-js/fn/promise';
-import { firebase } from 'firebase';
+import 'core-js/es/array';
+import { firebase } from './firebase';
 import store from './store';
 
 const firebaseConfig = {
@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-firebase.firestore().settings(settings); 
+firebase.firestore().settings(this.settings); 
 firebase.auth().onAuthStateChanged(user=>{
   store.dispatch("fetchUser", user)
 });
