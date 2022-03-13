@@ -41,6 +41,16 @@ const routes = [
     name: 'footer',
     component: () => import( '@/views/Footer.vue')
   },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import( '@/views/Contact.vue')
+  },
+  {
+    path: '/abouut',
+    name: 'abouut',
+    component: () => import( '@/views/About.vue')
+  },
  
  
 ]
