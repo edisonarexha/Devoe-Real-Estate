@@ -1,5 +1,6 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore} from 'firebase/firestore/lite';
+import {getAuth,onAuthStateChanged} from '@firebase/auth'; 
+import { initializeApp } from '@firebase/app';
+import store from '../store'
 
 const firebaseConfig = {
   apiKey: "AIzaSyBgCOhRFCojPEAKUuZ3_Vgb_hyXLavNgrY",
@@ -10,5 +11,8 @@ const firebaseConfig = {
   appId: "1:977488291433:web:8e1b93ec8e5010542c64f8"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+initializeApp(firebaseConfig);
+
+onAuthStateChanged(getAuth(),(user)=>{
+  store.dispatch("setUser",user);
+});

@@ -77,9 +77,7 @@
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/auth";
-import db from "../firebase/firebaseinit";
+import apiRequests from "../../src/utilities/apiRequests";
 export default {
   name: "RegisterView",
   data() {
@@ -99,21 +97,22 @@ export default {
         name: "login-view",
       });
     },
-    submit(){
-      firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.email, this.password)
-      .then( data => {
-        data.user
-        .updateProfile({
-          displayName: this.firstName
-        })
-        .then(() => {});
-      })
-      .catch(err => {
-        this.error = err.message;
-      })
-    }
+    async register() {
+      try {
+        await apiRequests.registerUser(
+          this.firstName,
+          this.lastName,
+          this.username,
+          this.email,
+          this.password
+        );
+        this.$router.replace({ name: "login-view" });
+      } catch (err) {
+        this.error = true;
+        this.errorMsg = "Please fill out all the fields" + err;
+      }
+      return;
+    },
    
   },
 };
