@@ -24,19 +24,31 @@
           <!-- <password class="icon"/> -->
         </div>
       </div>
-      <span @click="goToForgotPassword()" style="cursor:pointer">Forgot your Password?</span>
-      <el-button size="large" type="success" plain style="width:150px; margin-top:10px">Sign In</el-button>
+      <span @click="goToForgotPassword()" style="cursor: pointer"
+        >Forgot your Password?</span
+      >
+      <el-button
+        size="large"
+        type="success"
+        plain
+        style="width: 150px; margin-top: 10px"
+        @click.prevent="signIn"
+        >Sign In</el-button
+      >
       <p class="login-register">
         Don't have an account?
-        <span @click="goToSignUp()" style="cursor:pointer; color:#67C23A">Sign Up</span>
+        <span @click="goToSignUp()" style="cursor: pointer; color: #67c23a"
+          >Sign Up</span
+        >
       </p>
       <div class="angle"></div>
     </form>
-    <div class="background">test</div>
+    <div class="background"></div>
   </div>
 </template>
 
 <script>
+import { getAuth, signInWithEmailAndPassword } from "@firebase/auth";
 export default {
   name: "LoginView",
   data() {
@@ -45,19 +57,23 @@ export default {
       password: null,
     };
   },
-   methods:{
+  methods: {
     goToSignUp() {
       this.$router.push({
         name: "register-view",
       });
-  },
+    },
     goToForgotPassword() {
       this.$router.push({
         name: "forgot-password",
       });
-  }
-}
-}
+    },
+    async signIn() {
+      await signInWithEmailAndPassword(getAuth(), this.email, this.password);
+      // this.$router.replace({ name: "houses" });
+    },
+  },
+};
 </script>
 
 <style>

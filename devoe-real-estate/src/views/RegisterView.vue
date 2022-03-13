@@ -60,8 +60,10 @@
         type="success"
         plain
         style="width: 150px; margin-top: 10px"
+        @click.prevent ="register"
         >Sign Up</el-button
       >
+       <div v-show="error" style="margin-top: 10px;color:red">{{ errorMsg }}</div>
       <p class="login-register">
         Already have an account?
         <span @click="goToSignIn()" style="cursor: pointer; color: #67c23a"
@@ -70,56 +72,52 @@
       </p>
       <div class="angle"></div>
     </form>
-    <div v-show="error">{{errorMsg}}</div>
+      <div class="background">test</div>
   </div>
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/auth";
-import db from "../firebase/firebaseinit"
+import apiRequests from "../../src/utilities/apiRequests";
 export default {
   name: "RegisterView",
   data() {
     return {
-      firstName: null,
-      lastName: null,
-      username: null,
-      email: null,
-      password: null,
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      password: "",
       error: null,
       errorMsg: "",
     };
-
   },
-  methods:{
+  methods: {
     goToSignIn() {
       this.$router.push({
         name: "login-view",
       });
-  },
-  async register(){
-    if(
-      this.firstName !== "" ||
-      this.lastName !== "" ||
-      this.username !== "" ||
-      this.email !== "" ||
-      this.password !== "" 
-    ){
+    },
+    async register() {
+      try {
+        await apiRequests.registerUser(
+          this.firstName,
+          this.lastName,
+          this.username,
+          this.email,
+          this.password
+        );
+        this.$router.replace({ name: "login-view" });
+      } catch (err) {
+        this.error = true;
+        this.errorMsg = "Please fill out all the fields" + err;
+      }
       return;
-    } 
-    this.error = true
-    this.errorMsg = "Please fill out all the fields!"
-  }
-}
-}
+    },
+   
+  },
+};
 </script>
-
 <style>
-/* h2{
-    max-width: 350px;
-  } */
-
 .form-wrap {
   overflow: hidden;
   display: flex;
@@ -221,7 +219,7 @@ button {
 .background {
   flex: 2;
   background-size: cover;
-  background-image: url("../assets/houses.jpeg");
+  background-image: url("@/assets/houses.jpeg");
   width: 100%;
   height: 100%;
 }

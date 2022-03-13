@@ -1,6 +1,6 @@
 <template>
   <div class="reset-password">
-    <Modal v-if="modalActive === true" />
+    <!-- <Modal v-if="modalActive === true" /> -->
     <div class="form-wrap">
       <form class="reset" action="">
         <h2>Reset Password</h2>

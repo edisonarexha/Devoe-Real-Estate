@@ -6,7 +6,6 @@
   :default-active="activeIndex2"
   class="el-menu-demo"
   mode="horizontal"
-  @select="handleSelect"
   background-color="#545c64"
   text-color="#fff"
   active-text-color="#ffd04b">
@@ -20,13 +19,16 @@
     <el-menu-item index="2-3">Apartments</el-menu-item>
   
   </el-submenu>
-
+  <el-menu-item v-if="user" index="1">{{name}}</el-menu-item>
+  <el-button v-if="user" index="1">Log Out</el-button>
+  <el-button v-if="!user" index="1">Log In</el-button>
 </el-menu>
 
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
     data() {
       return {
@@ -34,11 +36,23 @@ export default {
         activeIndex2: '1'
       };
     },
+     computed: {
+    ...mapGetters({
+      user: "user",
+    }),
+  },
     methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+    checkUser() {
+      if (this.user.data) {
+        let arr = [2];
+        arr = this.user.data.email.split("@");
+        this.name = arr[0];
       }
-    }
+    },
+  },
+  mounted() {
+    this.checkUser();
+  },
   }
 </script>
 

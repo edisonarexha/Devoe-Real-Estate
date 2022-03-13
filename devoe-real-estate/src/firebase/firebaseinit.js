@@ -1,7 +1,8 @@
-import { firebase } from "firebase/app";
-import "firebase/firestore "
+import {getAuth,onAuthStateChanged} from '@firebase/auth'; 
+import { initializeApp } from '@firebase/app';
+import store from '../store'
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyBgCOhRFCojPEAKUuZ3_Vgb_hyXLavNgrY",
   authDomain: "devoe-2b5b3.firebaseapp.com",
   projectId: "devoe-2b5b3",
@@ -10,8 +11,8 @@ var firebaseConfig = {
   appId: "1:977488291433:web:8e1b93ec8e5010542c64f8"
 };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const timestamp = fireba.firestore.FieldValue.serverTimestamp;
+initializeApp(firebaseConfig);
 
-export {timestamp};
-export default firebaseApp.firestore();
+onAuthStateChanged(getAuth(),(user)=>{
+  store.dispatch("setUser",user);
+});
