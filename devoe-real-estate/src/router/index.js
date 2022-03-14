@@ -22,11 +22,6 @@ const routes = [
     component: () => import( '@/views/RegisterView.vue')
   },
   {
-    path: '/forgot-password',
-    name: 'forgot-password',
-    component: () => import( '@/views/ForgotPassword.vue')
-  },
-  {
     path: '/about',
     name: 'about',
     component: () => import( '@/views/AboutView.vue')

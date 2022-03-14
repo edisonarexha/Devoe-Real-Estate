@@ -186,26 +186,6 @@ input {
   transition: 0.5s ease all;
 }
 
-button {
-  color: #141414;
-  text-decoration: none;
-  margin-right: 10px;
-
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 1px 0px rgba(255, 255, 255, 0.1) inset,
-    0 0px 1px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0 1px 0px rgba(255, 255, 255, 0.1) inset,
-    0 0px 1px rgba(0, 0, 0, 0.7);
-  box-shadow: 0 1px 0px rgba(255, 255, 255, 0.1) inset,
-    0 0px 1px rgba(0, 0, 0, 0.7);
-
-  background: rgba(0, 0, 0, 0.1); /* #191919 */
-  border: 1px solid #141414;
-  padding: 10px 25px;
-}
-
 .angle {
   display: flex;
   position: absolute;
