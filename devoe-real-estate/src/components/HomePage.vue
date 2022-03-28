@@ -2,6 +2,9 @@
 <template :style="cssProps">
 
   <div>
+  <div>
+    <Header/>
+  </div>
     
    <div class="showoffdiv">
    <div style="background-color:black;width:100%;height:600px;opacity:0.7">
@@ -111,7 +114,10 @@
 </template>
 
 <script>
+import Header from '../views/Header.vue'
 export default {
+  
+  components:{Header},
   data() {
     return {
       // cssProps: {
@@ -360,6 +366,7 @@ ul.navbar.el-menu {
 .card0
   background: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80') center center no-repeat
   background-size: 300px
+  filter: grayscale(1)
 
   &:hover
     background: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80') left center no-repeat
@@ -374,6 +381,7 @@ ul.navbar.el-menu {
 .card1
   background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80') center center no-repeat
   background-size: 300px
+  filter: grayscale(1)
 
   &:hover
     background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80') left center no-repeat
@@ -388,6 +396,7 @@ ul.navbar.el-menu {
 .card2
   background: url('https://images.unsplash.com/photo-1571513800374-df1bbe650e56?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80') center center no-repeat
   background-size: 300px
+  filter: grayscale(1)
 
   &:hover
     background: url('https://images.unsplash.com/photo-1571513800374-df1bbe650e56?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80') left center no-repeat
