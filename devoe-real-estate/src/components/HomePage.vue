@@ -102,9 +102,10 @@
     </div>
     </div>
      <div style="width:100%;height:100px;background-color:white;">
-       <p>
+       <!-- <p>
          This is Devoe Inc , All rights Reserved!
-         </p>
+         </p> -->
+         <Footer/>
   </div>
  
   </div>
@@ -115,9 +116,10 @@
 
 <script>
 import Header from '../views/Header.vue'
+import Footer from '../views/Footer.vue'
 export default {
   
-  components:{Header},
+  components:{Header,Footer},
   data() {
     return {
       // cssProps: {
