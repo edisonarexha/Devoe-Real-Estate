@@ -22,29 +22,29 @@ const routes = [
     component: () => import( '@/views/RegisterView.vue')
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/about-view',
+    name: 'about-view',
     component: () => import( '@/views/AboutView.vue')
   },
   {
-    path: '/header',
-    name: 'header',
-    component: () => import( '@/views/Header.vue')
+    path: '/header-view',
+    name: 'header-view',
+    component: () => import( '@/views/HeaderView.vue')
   },
   {
-    path: '/footer',
-    name: 'footer',
-    component: () => import( '@/views/Footer.vue')
+    path: '/footer-view',
+    name: 'footer-view',
+    component: () => import( '@/views/FooterView.vue')
   },
   {
-    path: '/contact',
-    name: 'contact',
-    component: () => import( '@/views/Contact.vue')
+    path: '/contact-view',
+    name: 'contact-view',
+    component: () => import( '@/views/ContactView.vue')
   },
   {
-    path: '/abouut',
-    name: 'abouut',
-    component: () => import( '@/views/About.vue')
+    path: '/admin-dashboard',
+    name: 'admin-dashboard',
+    component: () => import( '@/views/AdminDashboard.vue')
   },
  
  
