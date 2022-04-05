@@ -10,12 +10,12 @@ const userController = {
     return res.json({ data: [] });
   },
   register: async (req, res) => {
-     const validationResult = registerSchema.validate(req.body);
-    if (validationResult.error) {
-      return res.status(403).json({
-        message: validationResult.error,
-      });
-    }
+    //  const validationResult = registerSchema.validate(req.body);
+    // if (validationResult.error) {
+    //   return res.status(403).json({
+    //     message: validationResult.error,
+    //   });
+    // }
 
     const { firstName, lastName, username, email, password } = req.body;
 

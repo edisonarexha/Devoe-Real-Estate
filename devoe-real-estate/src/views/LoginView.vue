@@ -70,7 +70,7 @@ export default {
     },
    async signIn() {
       await signInWithEmailAndPassword(getAuth(), this.email, this.password);
-      this.$router.replace({ name: "Home" });
+      this.$router.replace({ name: "app-view" });
 
     },
   },
