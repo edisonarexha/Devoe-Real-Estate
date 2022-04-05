@@ -2,17 +2,21 @@ import {getAuth,onAuthStateChanged} from '@firebase/auth';
 import { initializeApp } from '@firebase/app';
 import store from '../store'
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBgCOhRFCojPEAKUuZ3_Vgb_hyXLavNgrY",
-  authDomain: "devoe-2b5b3.firebaseapp.com",
-  projectId: "devoe-2b5b3",
-  storageBucket: "devoe-2b5b3.appspot.com",
-  messagingSenderId: "977488291433",
-  appId: "1:977488291433:web:8e1b93ec8e5010542c64f8"
+var firebaseConfig = {
+  apiKey: "AIzaSyArhxDapzJZPrZB2UAGREUSj2CIg27rtV0",
+  authDomain: "devoev2.firebaseapp.com",
+  projectId: "devoev2",
+  storageBucket: "devoev2.appspot.com",
+  messagingSenderId: "1072487555075",
+  appId: "1:1072487555075:web:442a2f92b94689ded26e36"
 };
 
-initializeApp(firebaseConfig);
+ initializeApp(firebaseConfig);
 
-onAuthStateChanged(getAuth(),(user)=>{
-  store.dispatch("setUser",user);
+onAuthStateChanged(getAuth(), async (user) => {
+  const tokenResult = user
+    ? await getAuth().currentUser.getIdTokenResult()
+    : { claims: null };
+
+  store.dispatch("fetchUser", { user, claims: tokenResult.claims });
 });

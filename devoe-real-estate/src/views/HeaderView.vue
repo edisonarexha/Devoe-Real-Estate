@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 export default {
     data() {
       return {
@@ -36,11 +36,11 @@ export default {
         activeIndex2: '1'
       };
     },
-     computed: {
-    ...mapGetters({
-      user: "user",
-    }),
-  },
+  //    computed: {
+  //   ...mapGetters({
+  //     user: "user",
+  //   }),
+  // },
     methods: {
     checkUser() {
       if (this.user.data) {
@@ -50,9 +50,9 @@ export default {
       }
     },
   },
-  mounted() {
-    this.checkUser();
-  },
+  // mounted() {
+  //   this.checkUser();
+  // },
   }
 </script>
 

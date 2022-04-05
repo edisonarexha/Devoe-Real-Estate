@@ -97,7 +97,7 @@ export default {
         name: "login-view",
       });
     },
-    async register() {
+     async register() {
       try {
         await apiRequests.registerUser(
           this.firstName,
@@ -106,7 +106,7 @@ export default {
           this.email,
           this.password
         );
-        this.$router.replace({ name: "login-view" });
+        this.$router.replace({ name: "home" });
       } catch (err) {
         this.error = true;
         this.errorMsg = "Please fill out all the fields" + err;

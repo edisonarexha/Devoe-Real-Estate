@@ -68,9 +68,10 @@ export default {
         name: "forgot-password",
       });
     },
-    async signIn() {
+   async signIn() {
       await signInWithEmailAndPassword(getAuth(), this.email, this.password);
-      // this.$router.replace({ name: "houses" });
+      this.$router.replace({ name: "Home" });
+
     },
   },
 };

@@ -1,6 +1,6 @@
 import admin from "firebase-admin";
 
-import serviceAccount from "../../credentials/devoe-2b5b3-firebase-adminsdk-7hy9r-e3b1e98304.json";
+import serviceAccount from "../../credentials/devoev2-firebase-adminsdk-8npbo-8f4302839c.json";
 
 
 admin.initializeApp({

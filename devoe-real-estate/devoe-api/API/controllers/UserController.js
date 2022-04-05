@@ -2,7 +2,6 @@ import admin from "../services/firebase";
 import registerSchema from "../../validatiors/registerValidatiors";
 import setRole from "../helpers/setRole";
 
-const db = admin.firestore();
 
 const adminEmails = ["admin@gmail.com"];
 
@@ -31,7 +30,7 @@ const userController = {
 
       if (adminEmails.includes(user.email)) {
         const customClaims = { admin: true };
-        await setRole(customClaims);
+        await setUserRole(customClaims);
       }
 
       res.json(user);
