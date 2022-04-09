@@ -29,7 +29,7 @@
         type="success"
         plain
         style="width: 150px; margin-top: 10px"
-        @click.prevent="signIn"
+        @click="signIn()"
         >Sign In</el-button
       >
       <p class="login-register">
@@ -46,6 +46,7 @@
 
 <script>
 import { getAuth, signInWithEmailAndPassword } from "@firebase/auth";
+import { mapActions } from 'vuex';
 export default {
   name: "LoginView",
   data() {
@@ -55,13 +56,16 @@ export default {
     };
   },
   methods: {
+    ...mapActions('users', ['fetchUser']),
     goToSignUp() {
       this.$router.push({
         name: "register-view",
       });
     },
    async signIn() {
-      await signInWithEmailAndPassword(getAuth(), this.email, this.password);
+     console.log("testing")
+      const user = await signInWithEmailAndPassword(getAuth(), this.email, this.password);
+      this.fetchUser({user})
       this.$router.replace({ name: "app-view" });
 
     },

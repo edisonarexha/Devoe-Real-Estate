@@ -4,7 +4,7 @@
     <div
      
     >
-      <el-button type="text" class="add" @click="addFormVisible = true"
+      <el-button  v-if="user.data.email === 'admin@gmail.com'" type="info" class="add" @click="addFormVisible = true"
         ><i class="el-icon-plus"></i
       ></el-button>
       <el-dialog
@@ -13,7 +13,7 @@
         height=""
         :visible.sync="addFormVisible"
       >
-        <AddHouses />
+        <AddHouses @changeDisplay="addFormVisible = false"/>
       </el-dialog>
     </div>
   </div>
@@ -22,7 +22,7 @@
 import CardHouse from "../reusable/CardHouse.vue";
 import AddHouses from "./AddHouses.vue";
 import apiRequests from "../../utilities/apiRequests";
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 export default {
   name: "HousePage",
   components: {
@@ -34,6 +34,10 @@ export default {
       addFormVisible: false,
     };
   },
+
+  beforeMount(){
+this.fetchHouses();
+  },
   created() {
     this.fetchHouses();
   },
@@ -42,6 +46,9 @@ export default {
       user: "user",
       houses: "housesList",
     }),
+    ...mapState('users', {
+        user: (state) => state.user
+      }),
   },
   methods: {
     async fetchHouses() {

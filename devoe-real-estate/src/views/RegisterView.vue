@@ -60,7 +60,7 @@
         type="success"
         plain
         style="width: 150px; margin-top: 10px"
-        @click.prevent ="register"
+        @click ="register()"
         >Sign Up</el-button
       >
        <div v-show="error" style="margin-top: 10px;color:red">{{ errorMsg }}</div>

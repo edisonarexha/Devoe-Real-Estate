@@ -5,15 +5,16 @@
     <CardFlat v-for="flat in flats" :key="flat._id" :flat="flat" />
     <div
       >
-      <el-button type="info" size="medium" class="add" @click="addFormVisible = true"
-      >Add Apartment</el-button>
+      <el-button  v-if="user.data.email === 'admin@gmail.com'" type="info" class="add" @click="addFormVisible = true"
+        ><i class="el-icon-plus"></i
+      ></el-button>
       <el-dialog
         top="12vh"
         width="43%"
         height=""
         :visible.sync="addFormVisible"
       >
-        <AddFlat />
+        <AddFlat @changeDisplay="addFormVisible = false" />
       </el-dialog>
     </div>
   </div>
@@ -23,7 +24,7 @@
 import CardFlat from "../reusable/CardFlat.vue";
 import AddFlat from "./AddFlats.vue";
 import apiRequests from "../../utilities/apiRequests";
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 export default {
   name: "FlatPage",
   components: {
@@ -35,6 +36,9 @@ export default {
       addFormVisible: false,
     };
   },
+  beforeMount(){
+    this.fetchFlats();
+  },
   created() {
     this.fetchFlats();
   },
@@ -43,6 +47,9 @@ export default {
       user: "user",
       flats: "flatsList",
     }),
+  ...mapState('users', {
+        user: (state) => state.user
+      }),
   },
   methods: {
     async fetchFlats() {

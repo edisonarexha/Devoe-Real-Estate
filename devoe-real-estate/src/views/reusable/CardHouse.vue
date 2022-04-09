@@ -17,11 +17,12 @@
           <div class="flexed">
           <p class="stock-p">Available</p>
         <div
+        v-if="user.data.email === 'admin@gmail.com'"
           class="index-button-div"
          
         >
           <el-button
-            class="edit-delete-sweets"
+            class="edit-delete-houses"
             type="text"
             @click="editFormVisible = true"
             ><i class="el-icon-edit"></i
@@ -33,7 +34,7 @@
             />
           </el-dialog>
           <el-button
-            class="edit-delete-sweets"
+            class="edit-delete-houses"
             type="text"
             @click="deleteFormVisible = true"
             ><i class="el-icon-delete"></i>
@@ -58,6 +59,7 @@
 <script>
 import EditHouse from '../Houses/EditHouse.vue';
 import DeleteHouses from '../Houses/DeleteHouses';
+import { mapState } from 'vuex';
 export default {
   components: {
     EditHouse,
@@ -74,6 +76,9 @@ export default {
     house: Object,
   },
   computed: {
+    ...mapState('users', {
+        user: (state) => state.user
+      }),
     src() {
       const filename = this.house.files?.split(";")[0];
       return filename ? `http://localhost:4000/static/${filename}` : null;
@@ -120,7 +125,7 @@ export default {
   flex-wrap: wrap;
   padding: 10px 1px 0px 17px;
 }
-.edit-delete-sweets {
+.edit-delete-houses {
   background-color: black;
   border-radius: 19px;
   height: 30px;

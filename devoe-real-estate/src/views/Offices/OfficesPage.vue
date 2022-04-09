@@ -4,7 +4,7 @@
     <div
      
     >
-      <el-button type="text" class="add" @click="addFormVisible = true"
+      <el-button  v-if="user.data.email === 'admin@gmail.com'" type="info" class="add" @click="addFormVisible = true"
         ><i class="el-icon-plus"></i
       ></el-button>
       <el-dialog
@@ -13,14 +13,14 @@
         height=""
         :visible.sync="addFormVisible"
       >
-        <add-offices />
+        <add-offices @changeDisplay="addFormVisible = false"/>
       </el-dialog>
     </div>
   </div>
 </template>
 <script>
 import apiRequests from "../../utilities/apiRequests";
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import CardOffice from '../reusable/CardOffice.vue';
 import AddOffices from './AddOffices.vue';
 export default {
@@ -42,11 +42,13 @@ export default {
       user: "user",
       offices: "officesList",
     }),
+    ...mapState('users', {
+        user: (state) => state.user
+      }),
   },
   methods: {
     async fetchOffices() {
       const result = await apiRequests.getOfficesList();
-      console.log("res", result);
       this.$store.dispatch("fetchOffices", result);
     },
   },

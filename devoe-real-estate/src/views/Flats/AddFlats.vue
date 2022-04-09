@@ -5,7 +5,7 @@
     <hr style="border: 1px solid " />
     <div>
       <div class="form">
-        <form class="form" @submit.prevent="createFlat">
+        <form class="form">
           <div class="form-group div-create-edit">
           
             <el-input class="input-create-edit form-control" placeholder="Name" v-model="form.name" />
@@ -40,7 +40,7 @@
             "
           >
             <el-button class="butoni" size="medium" @click="cancel()" type="danger" plain>Cancel</el-button>
-            <el-button class="butoni" type="primary">Create</el-button>
+            <el-button class="butoni" type="primary"  @click="createFlat">Create</el-button>
           </div>
         </form>
       </div>

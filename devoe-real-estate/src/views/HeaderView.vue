@@ -25,7 +25,7 @@
   <div>
 
   <!-- <el-menu-item v-if="user" index="1"></el-menu-item> -->
-  <el-button v-if="user.loggedIn === true" index="1" type="info" plain>Log Out</el-button>
+  <el-button v-if="user.loggedIn === true" index="1" type="info" plain @click="handleLogout()">Log Out</el-button>
   <el-button v-if="user.loggedIn === false 
   " index="1" type="info" plain @click="goToLogin()">Log In</el-button>
   </div>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { getAuth, signOut } from "@firebase/auth";
  import {mapState } from "vuex";
 export default {
     data() {
@@ -89,6 +90,12 @@ export default {
         name: "offices-view",
       });
       
+    },
+    async handleLogout() {
+      await signOut(getAuth())
+         this.$router.push({
+        name: "login-view",
+      });
     },
         
     // checkUser() {

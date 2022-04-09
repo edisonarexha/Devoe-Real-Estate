@@ -40,7 +40,7 @@
             "
           >
             <el-button class="butoni" size="medium" @click="cancel()" type="danger" plain>Cancel</el-button>
-            <el-button class="butoni" type="primary">Create</el-button>
+            <el-button class="butoni" type="primary" @click="createOffice()">Create</el-button>
           </div>
         </form>
       </div>

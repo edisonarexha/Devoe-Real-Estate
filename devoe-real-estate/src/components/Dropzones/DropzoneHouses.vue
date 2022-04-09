@@ -65,6 +65,8 @@ export default {
 </script>
 <style scoped>
  #customdropzone {
+   margin-top: 50px;
+   width: 400px;
     font-family: 'Arial', sans-serif;
     letter-spacing: 0.2px;
     color: #777;
@@ -73,6 +75,7 @@ export default {
     padding: 40px;
     position: relative;
     left: 217px;
+    padding-top: 15%;
     bottom: 25px;
 
 }

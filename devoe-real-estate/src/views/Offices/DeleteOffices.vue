@@ -1,10 +1,10 @@
 <template>
-  <div style="height: 220px">
+  <div style="height: 220px;">
     <h1 class="h1">Delete Office</h1>
 
-    <p class="p">Are you sure?</p>
-    <button class="cancel" @click="cancel()">No</button>
-    <button class="submit" @click="deleteOffice">Yes</button>
+    <p class="p">Are you sure you want to delete this office?</p>
+    <el-button class="butoni" type="danger" @click="cancel()">No</el-button>
+    <el-button class="butoni" type="primary" @click="deleteOffice">Yes</el-button>
   </div>
 </template>
 

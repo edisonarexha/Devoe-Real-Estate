@@ -16,9 +16,9 @@
           <p class="price-p" step="0.01">{{ flat.price }}</p>
           <div class="flexed">
           <p class="stock-p">Available</p>
-        <div class="index-button-div" >
+        <div class="index-button-div"  v-if="user.data.email === 'admin@gmail.com'">
           <el-button
-            class="edit-delete-sweets"
+            class="edit-delete-flats"
             type="text"
             @click="editFormVisible = true"
             ><i class="el-icon-edit"></i
@@ -30,7 +30,7 @@
             />
           </el-dialog>
           <el-button
-            class="edit-delete-sweets"
+            class="edit-delete-flats"
             type="text"
             @click="deleteFormVisible = true"
             ><i class="el-icon-delete"></i>
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import DeleteFlats from '../Flats/DeleteFlats.vue';
 import EditFlats from '../Flats/EditFlats.vue';
 export default {
@@ -72,6 +73,9 @@ export default {
     flat: Object,
   },
   computed: {
+      ...mapState('users', {
+        user: (state) => state.user
+      }),
     src() {
       const filename = this.flat.files?.split(";")[0];
       return filename ? `http://localhost:4000/static/${filename}` : null;
@@ -118,7 +122,7 @@ export default {
   flex-wrap: wrap;
   padding: 10px 1px 0px 17px;
 }
-.edit-delete-sweets {
+.edit-delete-flats {
   background-color: black;
   border-radius: 19px;
   height: 30px;

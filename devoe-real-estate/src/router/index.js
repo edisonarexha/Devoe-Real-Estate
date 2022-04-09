@@ -2,6 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import { onAuthStateChanged, getAuth } from "firebase/auth";
+import store from '../store/index'
+
+
 
 Vue.use(VueRouter)
 
@@ -105,6 +108,8 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
 
   onAuthStateChanged(getAuth(), (user) => {
+    console.log(store, user, 'testiii')
+    store.dispatch('users/fetchUser', {user}, {root:true})
     if (to.matched.some((record) => record.meta.isAuthenticated && !user)) {
       next("/login-view");
     }

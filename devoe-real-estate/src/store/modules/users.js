@@ -18,6 +18,7 @@ const mutations = {
 };
 const actions ={
   fetchUser({ commit }, { user, claims }) {
+    console.log(user, claims)
     commit("SET_USER", user ? user : null);
     commit("SET_USER_CLAIMS", user ? claims : null);
     commit("SET_LOGGED_IN", user !== null);

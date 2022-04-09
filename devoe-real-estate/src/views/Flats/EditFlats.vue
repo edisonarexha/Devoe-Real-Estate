@@ -7,21 +7,15 @@
       <div>
         <form class="form">
           <div class="form-group div-create-edit">
-            <label class="control-label label-create-edit label">Name </label>
             <el-input class="input-create-edit form-control" v-model="form.name" />
           </div>
           <div class="form-group div-create-edit">
-            <label class="control-label label-create-edit label">Price</label>
             <el-input class="input-create-edit form-control" v-model="form.price"/>
           </div>
           <div class="form-group div-create-edit">
-            <label class="control-label label-create-edit label">Stock</label>
             <el-input class="input-create-edit form-control" v-model="form.stock"/>
           </div>
           <div class="form-group div-create-edit">
-            <label class="control-label label-create-edit label"
-              >Description</label
-            >
             <el-input type="textarea" class="input-create-edit form-control" v-model="form.description"></el-input>
           </div>
           <div>

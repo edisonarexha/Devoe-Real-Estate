@@ -14,17 +14,11 @@
             >
           </p>
           <p class="price-p" step="0.01">{{ office.price }}</p>
-          <p class="stock-p">{{ office.stock }} in stock</p>
-        </div>
-        <div>
-          <el-button class="cart">Add To Cart</el-button>
-        </div>
-        <div
-          class="index-button-div"
-       
-        >
+          <div class="flexed">
+          <p class="stock-p">Available</p>
+        <div class="index-button-div"  v-if="user.data.email === 'admin@gmail.com'">
           <el-button
-            class="edit-delete-sweets"
+            class="edit-delete-offices"
             type="text"
             @click="editFormVisible = true"
             ><i class="el-icon-edit"></i
@@ -36,7 +30,7 @@
             />
           </el-dialog>
           <el-button
-            class="edit-delete-sweets"
+            class="edit-delete-offices"
             type="text"
             @click="deleteFormVisible = true"
             ><i class="el-icon-delete"></i>
@@ -51,6 +45,8 @@
             />
           </el-dialog>
         </div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
@@ -59,6 +55,7 @@
 <script>
 import EditOffice from '../Offices/EditOffice.vue';
 import DeleteOffices from '../Offices/DeleteOffices.vue';
+import { mapState } from 'vuex';
 export default {
   components: {
     EditOffice,
@@ -75,6 +72,9 @@ export default {
     office: Object,
   },
   computed: {
+    ...mapState('users', {
+        user: (state) => state.user
+      }),
     src() {
       const filename = this.office.files?.split(";")[0];
       return filename ? `http://localhost:4000/static/${filename}` : null;
@@ -95,20 +95,22 @@ export default {
 </script>
 
 <style scoped>
+.flexed{
+  display: flex;
+  justify-content: space-between
+}
 .li-cards {
   display: flex;
   flex-direction: column;
   flex: 1 0 15%;
   align-items: center;
-  height: 515px;
-  width: 310px;
-  border-radius: 12px;
+  width: 500px;
+  border-radius: 5px;
   padding: 22px 20px 0px 20px;
   background-color: #ffffff;
   margin-right: 27px;
   margin-bottom: 25px;
-  box-shadow: 0px 2px 10px #cc66669e;
-  border: 2px solid #fd4b4b5e;
+  border-style: groove;
 }
 .row-div {
   position: relative;
@@ -119,8 +121,8 @@ export default {
   flex-wrap: wrap;
   padding: 10px 1px 0px 17px;
 }
-.edit-delete-sweets {
-  background-color: #fd4b4b;
+.edit-delete-offices {
+  background-color: black;
   border-radius: 19px;
   height: 30px;
   width: 30px;
@@ -130,9 +132,9 @@ export default {
   color: white;
 }
 .index-button-div {
-  position: relative;
+  gap: 10px;
+  position: row;
   display: flex;
-  flex-direction: column;
   left: 120px;
   bottom: 130px;
 }
@@ -140,40 +142,40 @@ export default {
   padding: 0 !important;
 }
 .img {
-  width: 235px;
+  width: 500px;
   height: 265px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 .name-p {
+  text-decoration: none;
   padding-top: 5px;
-  font-family: Galdeano;
   font-size: 25px;
   margin-bottom: 0px;
   color: black;
-  width: 235px;
-  text-align: center;
+  width: 460px;
+  text-align: left;
   height: 75px;
+  
+}
+.name-p a{
+  text-decoration: none;
+  color: black;
+  text-transform: capitalize;
+  font-family: "Georgia", Times, serif;
+  
 }
 .price-p {
+  text-decoration: none;
   font-family: monospace;
   font-size: 25px;
-  text-align: center;
-  color: #fd4b4b;
-  padding-top: 5px;
+  text-align: right;
+  color: black;
+  margin-bottom: 30px;
+  margin-top: -75px;
 }
 .stock-p {
   font-size: 12px;
   color: gray;
   text-align: center;
-}
-.cart {
-  background-color: #fd4b4b !important;
-  color: #ffffff;
-  border-radius: 20px;
-  width: 125px;
-  height: 40px;
-  border: none;
-  text-align: center;
-  padding-top: 8px;
 }
 </style>

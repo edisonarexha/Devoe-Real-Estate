@@ -61,16 +61,19 @@ export default {
 };
 </script>
 <style scoped>
-#customdropzone {
-  font-family: "Arial", sans-serif;
-  letter-spacing: 0.2px;
-  color: #777;
-  transition: background-color 0.2s linear;
-  height: 100px;
-  padding: 40px;
-  position: relative;
-  left: 217px;
-  padding-top: 15%;
-  bottom: 25px;
+ #customdropzone {
+   margin-top: 50px;
+   width: 400px;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 0.2px;
+    color: #777;
+    transition: background-color .2s linear;
+    height: 440px;
+    padding: 40px;
+    position: relative;
+    left: 217px;
+    padding-top: 15%;
+    bottom: 25px;
+
 }
 </style>
