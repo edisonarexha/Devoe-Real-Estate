@@ -40,7 +40,7 @@ export default {
   computed: {
     ...mapGetters({
       user: "user",
-      offices: "housesList",
+      offices: "officesList",
     }),
   },
   methods: {
@@ -57,21 +57,14 @@ export default {
   display: flex;
   flex-direction: row;
   flex: 1 0 25%;
-  align-items: center;
   flex-wrap: wrap;
 }
 .add {
-  color: white;
-  background-color: #fd4b4b;
   position: fixed;
-  border: none;
-  border-radius: 30px;
-  top: 50%;
-  width: 42px;
-  height: 42px;
   text-align: center;
   padding-top: 10px;
   font-size: 22px;
   right: 12px;
+  margin: 10px;
 }
 </style>

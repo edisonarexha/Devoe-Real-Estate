@@ -6,10 +6,10 @@
     <div>
       <div>
         <form class="form" @submit.prevent="createHouse">
-          <DropzoneHouses
+          <!-- <DropzoneHouses
             :houseId="this.$route.params.id"
             :initialFiles="house.files"
-          />
+          /> -->
 
           <div class="form-group div-create-edit">
             <label class="control-label label-create-edit">Name</label>
@@ -55,11 +55,11 @@
 
 <script>
 import apiRequest from "../../utilities/apiRequests";
-import DropzoneHouses from '@/components/Dropzones/DropzoneHouses.vue';
+// import DropzoneHouses from '@/components/Dropzones/DropzoneHouses.vue';
 export default {
   name: "AddHouses",
   components: {
-    DropzoneHouses,
+    // DropzoneHouses,
   },
   data() {
     return {

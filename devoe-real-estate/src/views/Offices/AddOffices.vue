@@ -79,6 +79,7 @@ export default {
       this.$emit("changeDisplay", false);
     },
     async createOffice() {
+      console.log("test")
       await apiRequest.createOffices({ ...this.form }).then(() => {
         this.$emit("changeDisplay", false);
       });

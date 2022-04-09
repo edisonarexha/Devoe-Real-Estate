@@ -94,22 +94,22 @@ export default {
 .el-dialog__body {
   padding: 0px 12px !important;
   color: black;
-  text-align: center;
-  font-family: GrandHotel;
-  font-size: 55px;
-  position: relative;
+    text-align: center;
+     font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    position: relative;
+    text-decoration: none;
 }
 .form {
-    width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+  position: relative;
+  left: 60px;
+  width: 500px;
 }
 .submit {
   background-color: rgb(221, 27, 27);
   border: 1px solid rgb(221, 27, 27);
   border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
   color: white;
   cursor: pointer;
@@ -128,11 +128,11 @@ export default {
     background-color: lightseagreen;
     color: white;
     border: none;*/
-  top: 22px;
-  left: 161px;
+    top: 22px;
+    left: 161px; 
 }
 .submit:hover {
-  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
   transform: translateY(-2px);
 }
 .label {
@@ -144,7 +144,7 @@ export default {
   background-color: rgb(0, 155, 245);
   border: 1px solid rgb(0, 155, 245);
   border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -155,15 +155,19 @@ export default {
   top: 22px;
 }
 .cancel:hover {
-  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
   transform: translateY(-2px);
 }
 .div-create-edit {
   position: relative;
   left: 9px;
-  color: #fd4b4b;
+  color: black;
   font-weight: 500;
   font-family: Galdeano;
   font-size: 20px;
+}
+.butoni{
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 </style>

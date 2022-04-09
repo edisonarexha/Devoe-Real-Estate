@@ -1,4 +1,6 @@
 <template>
+<div>
+    <!-- <h3>Check our Apartments</h3> -->
   <div class="card-div">
     <CardFlat v-for="flat in flats" :key="flat._id" :flat="flat" />
     <div
@@ -15,6 +17,7 @@
       </el-dialog>
     </div>
   </div>
+</div>
 </template>
 <script>
 import CardFlat from "../reusable/CardFlat.vue";

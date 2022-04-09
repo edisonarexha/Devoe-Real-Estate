@@ -105,7 +105,7 @@
        <!-- <p>
          This is Devoe Inc , All rights Reserved!
          </p> -->
-         <Footer/>
+         <!-- <Footer/> -->
   </div>
  
   </div>
@@ -116,10 +116,10 @@
 
 <script>
 
-import Footer from '../views/FooterView'
+// import Footer from '../views/FooterView'
 export default {
   
-  components:{Footer},
+  // components:{Footer},
   data() {
     return {
       // cssProps: {

@@ -57,7 +57,7 @@
 
 <script>
 import EditHouse from '../Houses/EditHouse.vue';
-import DeleteHouses from '../Offices/DeleteOffices.vue';
+import DeleteHouses from '../Houses/DeleteHouses';
 export default {
   components: {
     EditHouse,

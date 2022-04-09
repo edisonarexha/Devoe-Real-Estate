@@ -34,12 +34,13 @@ export default {
 <style scoped>
 
 .h1 {
-  font-family: GrandHotel;
-  font-size: 45px;
-  color: #fd4b4b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  color: black;
+  text-decoration: none;
 }
 .p {
-  font-family: Galdeano;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
 }
 .cancel {
@@ -48,7 +49,7 @@ export default {
   background-color: rgb(0, 155, 245);
   border: 1px solid rgb(0, 155, 245);
   border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -56,17 +57,17 @@ export default {
   position: relative;
   right: 45px;
   font-size: 22px;
-  top: 22px;
+  top: 22px; 
 }
 .cancel:hover {
-  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
   transform: translateY(-2px);
 }
 .submit {
   background-color: rgb(221, 27, 27);
   border: 1px solid rgb(221, 27, 27);
   border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -79,7 +80,11 @@ export default {
   left: 50px;
 }
 .submit:hover {
-  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
   transform: translateY(-2px);
+}
+
+.butoni{
+  margin-bottom: 40px;
 }
 </style>

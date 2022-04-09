@@ -37,11 +37,11 @@ const routes = [
     name: 'header-view',
     component: () => import( '@/views/HeaderView.vue')
   },
-  {
-    path: '/footer-view',
-    name: 'footer-view',
-    component: () => import( '@/views/FooterView.vue')
-  },
+  // {
+  //   path: '/footer-view',
+  //   name: 'footer-view',
+  //   component: () => import( '@/views/FooterView.vue')
+  // },
   {
     path: '/contact-view',
     name: 'contact-view',
@@ -65,7 +65,7 @@ const routes = [
   {
     path: '/offices-view',
     name: 'offices-view',
-    component: () => import('../views/Offices/Offices')
+    component: () => import('../views/Offices/OfficesPage')
   },
   {
     path: '/ViewFlat',

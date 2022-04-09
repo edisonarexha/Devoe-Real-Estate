@@ -94,7 +94,7 @@ export default {
 <style scoped>
 .flexed{
   display: flex;
-  gap: 50px;
+  justify-content: space-between
 }
 .li-cards {
   display: flex;

@@ -21,10 +21,7 @@
         </div>
         <div
           class="index-button-div"
-          v-if="
-            this.$store.state.users.claims &&
-            this.$store.state.users.claims.admin
-          "
+       
         >
           <el-button
             class="edit-delete-sweets"
