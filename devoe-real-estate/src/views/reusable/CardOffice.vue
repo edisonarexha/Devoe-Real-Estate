@@ -3,36 +3,43 @@
     <ul class="row-div">
       <li class="li-cards">
         <div>
-          <a
-            ><img
-              class="img"
-              src="https://natashaskitchen.com/wp-content/uploads/2020/06/Strawberry-Smoothies-5.jpg"
-          /></a>
+          <a><img class="img" v-if="src" :src="src" /></a>
         </div>
         <div>
-          <p class="name-p"><a>Name</a></p>
-          <p class="price-p" step="0.01">Price</p>
-          <p class="stock-p">Stock in stock</p>
+          <p class="name-p">
+
+             <router-link
+              :to="{ name: 'ViewOffice', params: { id: office._id } }"
+              >{{ office.name }}</router-link
+            >
+          </p>
+          <p class="price-p" step="0.01">{{ office.price }}</p>
+          <p class="stock-p">{{ office.stock }} in stock</p>
         </div>
         <div>
-          <b-button class="cart">Add To Cart</b-button>
+          <el-button class="cart">Add To Cart</el-button>
         </div>
-        <div class="index-button-div">
+        <div
+          class="index-button-div"
+          v-if="
+            this.$store.state.users.claims &&
+            this.$store.state.users.claims.admin
+          "
+        >
           <el-button
-            class="edit-delete-houses"
+            class="edit-delete-sweets"
             type="text"
             @click="editFormVisible = true"
             ><i class="el-icon-edit"></i
           ></el-button>
-          <el-dialog
-            top="13vh"
-            width="43%"
-            :visible.sync="editFormVisible"
-          >
-            <EditItem v-on:changeDisplay="editFormNotVisible($event)" />
+          <el-dialog top="13vh" width="43%" :visible.sync="editFormVisible">
+            <edit-office
+              :offices="office"
+              v-on:changeDisplay="editFormNotVisible($event)"
+            />
           </el-dialog>
           <el-button
-            class="edit-delete-houses"
+            class="edit-delete-sweets"
             type="text"
             @click="deleteFormVisible = true"
             ><i class="el-icon-delete"></i>
@@ -41,7 +48,10 @@
             :visible.sync="deleteFormVisible"
             style="width: 65vw; top: 15vh; margin-left: 265px"
           >
-            <DeleteItem v-on:changeDisplay="deleteFormNotVisible($event)" />
+            <delete-offices
+              :id="id"
+              v-on:changeDisplay="deleteFormNotVisible($event)"
+            />
           </el-dialog>
         </div>
       </li>
@@ -50,18 +60,31 @@
 </template>
 
 <script>
-import EditItem from "./EditItem.vue";
-import DeleteItem from "./DeleteItem.vue";
+import EditOffice from '../Offices/EditOffice.vue';
+import DeleteOffices from '../Offices/DeleteOffices.vue';
 export default {
   components: {
-    EditItem,
-    DeleteItem,
+    EditOffice,
+    DeleteOffices,
   },
   data() {
     return {
       editFormVisible: false,
       deleteFormVisible: false,
+      id: null,
     };
+  },
+  props: {
+    office: Object,
+  },
+  computed: {
+    src() {
+      const filename = this.office.files?.split(";")[0];
+      return filename ? `http://localhost:4000/static/${filename}` : null;
+    },
+  },
+  mounted() {
+    this.id = this.office._id;
   },
   methods: {
     deleteFormNotVisible(e) {
@@ -99,7 +122,7 @@ export default {
   flex-wrap: wrap;
   padding: 10px 1px 0px 17px;
 }
-.edit-delete-houses {
+.edit-delete-sweets {
   background-color: #fd4b4b;
   border-radius: 19px;
   height: 30px;
@@ -119,41 +142,41 @@ export default {
 .el-dialog__header {
   padding: 0 !important;
 }
-.img{
+.img {
   width: 235px;
-    height: 265px;
-    border-radius: 8px;
+  height: 265px;
+  border-radius: 8px;
 }
-.name-p{
+.name-p {
   padding-top: 5px;
-    font-family: Galdeano;
-    font-size: 25px;
-    margin-bottom: 0px;
-    color: black;
-    width: 235px;
-    text-align: center;
-    height: 75px;
+  font-family: Galdeano;
+  font-size: 25px;
+  margin-bottom: 0px;
+  color: black;
+  width: 235px;
+  text-align: center;
+  height: 75px;
 }
-.price-p{
+.price-p {
   font-family: monospace;
-    font-size: 25px;
-    text-align: center;
-    color: #FD4B4B;
-    padding-top: 5px;
+  font-size: 25px;
+  text-align: center;
+  color: #fd4b4b;
+  padding-top: 5px;
 }
-.stock-p{
+.stock-p {
   font-size: 12px;
-    color: gray;
-    text-align: center;
+  color: gray;
+  text-align: center;
 }
-.cart{
-  background-color: #FD4B4B !important;
-    color: #FFFFFF;
-    border-radius: 20px;
-    width: 125px;
-    height: 40px;
-    border: none;
-    text-align: center;
-    padding-top: 8px;
+.cart {
+  background-color: #fd4b4b !important;
+  color: #ffffff;
+  border-radius: 20px;
+  width: 125px;
+  height: 40px;
+  border: none;
+  text-align: center;
+  padding-top: 8px;
 }
 </style>

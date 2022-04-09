@@ -16,7 +16,7 @@ flatRoute.put("/:id/uploadFile", flatsController.uploadFile);
 flatRoute.delete("/:id", flatsController.delete);
 
 flatRoute.put(
-  "/:sweetsId/removeFile/:filename",
+  "/:flatsId/removeFile/:filename",
   flatsController.deleteFile
 );
 

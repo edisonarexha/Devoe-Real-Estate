@@ -1,8 +1,12 @@
-const setRole = async (customClaim) => {
-  await admin.auth().setCustomUserClaims(user.uid, customClaim);
-  return await db.collection("roles").doc(user.uid).set({
+import admin from "../services/firebase";
+
+const db = admin.firestore();
+
+export default function setUserRole(user, newClaims) {
+  admin.auth().setCustomUserClaims(user.uid, newClaims);
+
+  db.collection("roles").doc(user.uid).set({
     email: user.email,
-    role: customClaim,
+    role: newClaims,
   });
-};
-export default setRole;
+}

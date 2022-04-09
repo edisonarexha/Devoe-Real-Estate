@@ -16,7 +16,7 @@ officeRoute.put("/:id/uploadFile", officesController.uploadFile);
 officeRoute.delete("/:id", officesController.delete);
 
 officeRoute.put(
-  "/:sweetsId/removeFile/:filename",
+  "/:officesId/removeFile/:filename",
   officesController.deleteFile
 );
 

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 
 Vue.use(VueRouter)
 
@@ -12,7 +13,7 @@ const routes = [
     
   },
   {
-    path: '/login-view',
+    path: '/login',
     name: 'login-view',
     component: () => import( '@/views/LoginView.vue'),
   },
@@ -51,6 +52,47 @@ const routes = [
     name: 'admin-dashboard',
     component: () => import( '@/views/AdminDashboard.vue')
   },
+  {
+    path: '/houses-view',
+    name: 'houses-view',
+    component: () => import( '../views/Houses/HousesPage')
+  },
+  {
+    path: '/flats-view',
+    name: 'flats-view',
+    component: () => import('../views/Flats/FlatsPage')
+  },
+  {
+    path: '/offices-view',
+    name: 'offices-view',
+    component: () => import('../views/Offices/Offices')
+  },
+  {
+    path: '/ViewFlat',
+    name: 'ViewFlat',
+    component: () => import('../views/Flats/ViewFlat')
+  },
+  {
+    path: '/ViewHouse',
+    name: 'ViewHouse',
+    component: () => import('../views/Houses/ViewHouse')
+  },
+  {
+    path: '/ViewOffice',
+    name: 'ViewOffice',
+    component: () => import('../views/Offices/ViewOffice')
+  },
+   {
+     path: '/add-view',
+     name: 'add-view',
+     component: () => import('../views/Offices/AddOffices')
+   },
+  //  {
+  //   path: '/offices-view',
+  //   name: 'offices-view',
+  //   component: () => import('../views/Offices/Offices')
+  // },
+
  
  
 ]
@@ -59,6 +101,16 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
+router.beforeEach((to, from, next) => {
+
+  onAuthStateChanged(getAuth(), (user) => {
+    if (to.matched.some((record) => record.meta.isAuthenticated && !user)) {
+      next("/login-view");
+    }
+  });
+
+  next();
+});
 
 export default router

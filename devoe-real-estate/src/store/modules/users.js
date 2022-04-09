@@ -16,7 +16,7 @@ const mutations = {
     state.claims = userClaims;
   },
 };
-const actions = {
+const actions ={
   fetchUser({ commit }, { user, claims }) {
     commit("SET_USER", user ? user : null);
     commit("SET_USER_CLAIMS", user ? claims : null);
@@ -32,6 +32,7 @@ const getters = {
   },
 };
 export default {
+  namespaced: true,
   state,
   mutations,
   actions,

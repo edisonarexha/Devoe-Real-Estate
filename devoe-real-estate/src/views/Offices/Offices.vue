@@ -1,37 +1,77 @@
 <template>
   <div class="card-div">
-    <CardOffice />
-    <CardOffice />
-    <CardOffice />
-    <CardOffice />
-    <CardOffice />
-
-    <el-button
-      type="text"
-      class="add"
-      @click="addFormVisible = true"
-      ><i class="el-icon-plus"></i
-    ></el-button>
-    <el-dialog top="12vh" width="43%" height="" :visible.sync="addFormVisible">
-      <AddOffices />
-    </el-dialog>
+    <card-office v-for="office in offices" :key="office._id" :office="office" />
+    <div
+     
+    >
+      <el-button type="text" class="add" @click="addFormVisible = true"
+        ><i class="el-icon-plus"></i
+      ></el-button>
+      <el-dialog
+        top="12vh"
+        width="43%"
+        height=""
+        :visible.sync="addFormVisible"
+      >
+        <add-offices />
+      </el-dialog>
+    </div>
   </div>
 </template>
 <script>
-import CardOffice from "../reusables/CardOffice.vue";
-import AddOffices from "./AddOffices";
+import apiRequests from "../../utilities/apiRequests";
+import { mapGetters } from "vuex";
+import CardOffice from '../reusable/CardOffice.vue';
+import AddOffices from './AddOffices.vue';
 export default {
-  name: "HousesPage",
+  name: "OfficePage",
   components: {
     CardOffice,
     AddOffices,
   },
-  data(){
-      return{
-          addFormVisible: false,
-      }
-  }
+  data() {
+    return {
+      addFormVisible: false,
+    };
+  },
+  created() {
+    this.fetchOffices();
+  },
+  computed: {
+    ...mapGetters({
+      user: "user",
+      offices: "housesList",
+    }),
+  },
+  methods: {
+    async fetchOffices() {
+      const result = await apiRequests.getOfficesList();
+      console.log("res", result);
+      this.$store.dispatch("fetchOffices", result);
+    },
+  },
 };
 </script>
 <style scoped>
+.card-div {
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 25%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.add {
+  color: white;
+  background-color: #fd4b4b;
+  position: fixed;
+  border: none;
+  border-radius: 30px;
+  top: 50%;
+  width: 42px;
+  height: 42px;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 22px;
+  right: 12px;
+}
 </style>

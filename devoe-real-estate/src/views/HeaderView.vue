@@ -6,29 +6,36 @@
   :default-active="activeIndex2"
   class="el-menu-demo"
   mode="horizontal"
-  background-color="#545c64"
-  text-color="#fff"
-  active-text-color="#ffd04b">
-  <el-menu-item index="1">HomePage</el-menu-item>
-  <el-menu-item index="1">About us</el-menu-item>
-  <el-menu-item index="1">Contact Us</el-menu-item>
-  <el-submenu index="2">
+  background-color="white"
+  text-color="black"
+  active-text-color="graz">
+  <div class="flexed">
+  <el-menu-item index="1" @click="goToHome()">HomePage</el-menu-item>
+  <el-menu-item index="2" @click="goToAboutUs()">About us</el-menu-item>
+  <el-menu-item index="3" @click="goToAConrtact()" >Contact Us</el-menu-item>
+  <el-submenu index="4">
     <template slot="title">Rent and Buy</template>
-    <el-menu-item index="2-1">Houses</el-menu-item>
-    <el-menu-item index="2-2">Offices</el-menu-item>
-    <el-menu-item index="2-3">Apartments</el-menu-item>
+    <el-menu-item index="4-1" @click="goToHouses()">Houses</el-menu-item>
+    <el-menu-item index="4-2"  @click="goToOffices()">Offices</el-menu-item>
+    <el-menu-item index="4-3"  @click="goToFlats()">Apartments</el-menu-item>
   
   </el-submenu>
-  <el-menu-item v-if="user" index="1">{{name}}</el-menu-item>
-  <el-button v-if="user" index="1">Log Out</el-button>
-  <el-button v-if="!user" index="1">Log In</el-button>
+  </div>
+
+  <div>
+
+  <!-- <el-menu-item v-if="user" index="1"></el-menu-item> -->
+  <el-button v-if="user.loggedIn === true" index="1" type="info" plain>Log Out</el-button>
+  <el-button v-if="user.loggedIn === false 
+  " index="1" type="info" plain @click="goToLogin()">Log In</el-button>
+  </div>
 </el-menu>
 
   </div>
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
+ import {mapState } from "vuex";
 export default {
     data() {
       return {
@@ -36,26 +43,77 @@ export default {
         activeIndex2: '1'
       };
     },
-  //    computed: {
-  //   ...mapGetters({
-  //     user: "user",
-  //   }),
-  // },
+    computed: {
+      ...mapState('users', {
+        user: (state) => state.user
+      }),
+    // ...mapGetters({
+    //   user: "user",
+    // }),
+ },
     methods: {
-    checkUser() {
-      if (this.user.data) {
-        let arr = [2];
-        arr = this.user.data.email.split("@");
-        this.name = arr[0];
-      }
+         goToAboutUs() {
+      this.$router.push({
+        name: "about-view",
+      });
     },
+         goToHome() {
+      this.$router.push({
+        name: "app-view",
+      });
+    },
+         goToAConrtact() {
+      this.$router.push({
+        name: "contact-view",
+      });
+    },
+         goToLogin() {
+      this.$router.push({
+        name: "login-view",
+      });
+    },
+         goToHouses() {
+      this.$router.push({
+        name: "houses-view",
+      });
+      
+    },
+         goToFlats() {
+      this.$router.push({
+        name: "flats-view",
+      });
+      
+    },
+         goToOffices() {
+      this.$router.push({
+        name: "offices-view",
+      });
+      
+    },
+        
+    // checkUser() {
+    //   if (this.user.data) {
+    //     let arr = [2];
+    //     arr = this.user.data.email.split("@");
+    //     // this.name = arr[0];
+    //   }
+    // },
   },
-  // mounted() {
-  //   this.checkUser();
-  // },
+//   mounted() {
+//    this.checkUser();
+//  },
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.el-menu-demo{
+  display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.flexed{
+  display: flex;
+align-items: center;
 
+}
 </style>

@@ -3,7 +3,7 @@
 
   <div>
   <div>
-    <Header/>
+    
   </div>
     
    <div class="showoffdiv">
@@ -115,11 +115,11 @@
 </template>
 
 <script>
-import Header from '../views/HeaderView';
+
 import Footer from '../views/FooterView'
 export default {
   
-  components:{Header,Footer},
+  components:{Footer},
   data() {
     return {
       // cssProps: {
@@ -214,7 +214,7 @@ export default {
 
 .thirdmain-div{
    /* border:1px solid white; */
-  
+  margin-left:10%;
    height: 600px
 }
 .secondmain-div{

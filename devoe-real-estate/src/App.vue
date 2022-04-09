@@ -13,7 +13,30 @@ export default {
   name: 'App',
  components :{
    Header
- }
+ },
+  // created(){
+  //   this.checkRoute();
+  // },
+  //  data(){
+  //   return{
+  //     navigation:null
+  //   }
+  // },
+  // methods:{
+  //   checkRoute(){
+  //     if(this.$route.name==="login-view" || this.$route.name==="register-view"){
+  //      this.navigation=true;
+  //      return;
+  //     }else{
+  //       this.navigation=false;
+  //     }
+  //   }
+  // },
+  // watch:{
+  //   $route(){
+  //     this.checkRoute();
+  //   }
+  // }
 }
 </script>
 

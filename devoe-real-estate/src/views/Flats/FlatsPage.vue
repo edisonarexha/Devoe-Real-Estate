@@ -1,37 +1,68 @@
 <template>
   <div class="card-div">
-    <CardFlat />
-    <CardFlat />
-    <CardFlat />
-    <CardFlat />
-    <CardFlat />
-
-    <el-button
-      type="text"
-      class="add"
-      @click="addFormVisible = true"
-      ><i class="el-icon-plus"></i
-    ></el-button>
-    <el-dialog top="12vh" width="43%" height="" :visible.sync="addFormVisible">
-      <AddFlats />
-    </el-dialog>
+    <CardFlat v-for="flat in flats" :key="flat._id" :flat="flat" />
+    <div
+      >
+      <el-button type="info" size="medium" class="add" @click="addFormVisible = true"
+      >Add Apartment</el-button>
+      <el-dialog
+        top="12vh"
+        width="43%"
+        height=""
+        :visible.sync="addFormVisible"
+      >
+        <AddFlat />
+      </el-dialog>
+    </div>
   </div>
 </template>
 <script>
-import CardFlat from "../reusables/CardFlat.vue";
-import AddFlats from "./AddFlats";
+import CardFlat from "../reusable/CardFlat.vue";
+import AddFlat from "./AddFlats.vue";
+import apiRequests from "../../utilities/apiRequests";
+import { mapGetters } from "vuex";
 export default {
-  name: "HousesPage",
+  name: "FlatPage",
   components: {
     CardFlat,
-    AddFlats,
+    AddFlat,
   },
-  data(){
-      return{
-          addFormVisible: false,
-      }
-  }
+  data() {
+    return {
+      addFormVisible: false,
+    };
+  },
+  created() {
+    this.fetchFlats();
+  },
+  computed: {
+    ...mapGetters({
+      user: "user",
+      flats: "flatsList",
+    }),
+  },
+  methods: {
+    async fetchFlats() {
+      const result = await apiRequests.getFlatsList();
+      console.log("res", result);
+      this.$store.dispatch("fetchFlats", result);
+    },
+  },
 };
 </script>
 <style scoped>
+.card-div {
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 25%;
+  flex-wrap: wrap;
+}
+.add {
+  position: fixed;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 22px;
+  right: 12px;
+  margin: 10px;
+}
 </style>

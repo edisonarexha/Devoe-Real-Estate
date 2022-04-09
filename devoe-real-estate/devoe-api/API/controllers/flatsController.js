@@ -24,7 +24,7 @@ const flatsController = {
     const { id } = req.params;
 
     try {
-      await RealEstateModel.deleteOne({
+      await Flats.deleteOne({
         _id: id,
         // userId: req.authId
       });

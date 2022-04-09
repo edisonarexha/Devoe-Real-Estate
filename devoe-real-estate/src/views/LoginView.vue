@@ -18,15 +18,12 @@
             type="password"
             placeholder="Password"
             v-model="password"
-            name=""
-            id=""
+
           />
           <!-- <password class="icon"/> -->
         </div>
       </div>
-      <span @click="goToForgotPassword()" style="cursor: pointer"
-        >Forgot your Password?</span
-      >
+     
       <el-button
         size="large"
         type="success"
@@ -61,11 +58,6 @@ export default {
     goToSignUp() {
       this.$router.push({
         name: "register-view",
-      });
-    },
-    goToForgotPassword() {
-      this.$router.push({
-        name: "forgot-password",
       });
     },
    async signIn() {

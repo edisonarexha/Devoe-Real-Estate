@@ -1,37 +1,70 @@
 <template>
   <div class="card-div">
-    <CardHouse />
-    <CardHouse />
-    <CardHouse />
-    <CardHouse />
-    <CardHouse />
-
-    <el-button
-      type="text"
-      class="add"
-      @click="addFormVisible = true"
-      ><i class="el-icon-plus"></i
-    ></el-button>
-    <el-dialog top="12vh" width="43%" height="" :visible.sync="addFormVisible">
-      <AddHouses />
-    </el-dialog>
+    <CardHouse v-for="house in houses" :key="house._id" :house="house" />
+    <div
+     
+    >
+      <el-button type="text" class="add" @click="addFormVisible = true"
+        ><i class="el-icon-plus"></i
+      ></el-button>
+      <el-dialog
+        top="12vh"
+        width="43%"
+        height=""
+        :visible.sync="addFormVisible"
+      >
+        <AddHouses />
+      </el-dialog>
+    </div>
   </div>
 </template>
 <script>
-import CardHouse from "../reusables/CardHouse.vue";
-import AddHouses from "./AddHouses";
+import CardHouse from "../reusable/CardHouse.vue";
+import AddHouses from "./AddHouses.vue";
+import apiRequests from "../../utilities/apiRequests";
+import { mapGetters } from "vuex";
 export default {
-  name: "HousesPage",
+  name: "HousePage",
   components: {
     CardHouse,
     AddHouses,
   },
-  data(){
-      return{
-          addFormVisible: false,
-      }
-  }
+  data() {
+    return {
+      addFormVisible: false,
+    };
+  },
+  created() {
+    this.fetchHouses();
+  },
+  computed: {
+    ...mapGetters({
+      user: "user",
+      houses: "housesList",
+    }),
+  },
+  methods: {
+    async fetchHouses() {
+      const result = await apiRequests.getHousesList();
+      console.log("res", result);
+      this.$store.dispatch("fetchHouses", result);
+    },
+  },
 };
 </script>
 <style scoped>
+.card-div {
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 25%;
+  flex-wrap: wrap;
+}
+.add {
+  position: fixed;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 22px;
+  right: 12px;
+  margin: 10px;
+}
 </style>

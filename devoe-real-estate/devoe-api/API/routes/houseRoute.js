@@ -16,7 +16,7 @@ houseRoute.put("/:id/uploadFile", housesController.uploadFile);
 houseRoute.delete("/:id", housesController.delete);
 
 houseRoute.put(
-  "/:sweetsId/removeFile/:filename",
+  "/:housesId/removeFile/:filename",
   housesController.deleteFile
 );
 

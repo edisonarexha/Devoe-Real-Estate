@@ -6,7 +6,7 @@ const fileDir = `${__dirname}/../../public/files/`;
 const FileService = {
   uploadFiles: async (files) => {
     const names = files.map((file) => {
-      const filename = `houses_${new Date().getTime()}_${file.name}`;
+      const filename = `${new Date().getTime()}_${file.name}`;
       if (!fs.existsSync(fileDir)) {
         fs.mkdirSync(fileDir);
       }

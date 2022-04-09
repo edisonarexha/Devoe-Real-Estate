@@ -1,6 +1,6 @@
 import {getAuth,onAuthStateChanged} from '@firebase/auth'; 
 import { initializeApp } from '@firebase/app';
-import store from '../store'
+//import store from '../store/index.js'
 
 var firebaseConfig = {
   apiKey: "AIzaSyArhxDapzJZPrZB2UAGREUSj2CIg27rtV0",
@@ -17,6 +17,7 @@ onAuthStateChanged(getAuth(), async (user) => {
   const tokenResult = user
     ? await getAuth().currentUser.getIdTokenResult()
     : { claims: null };
+    console.log(user)
 
-  store.dispatch("fetchUser", { user, claims: tokenResult.claims });
+  this.$store.dispatch("fetchUser", { user, claims: tokenResult.claims });
 });
